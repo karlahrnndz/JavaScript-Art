@@ -1,0 +1,23 @@
+body {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background-color: #eeeeee;
+}
+
+#my-div {
+	position: absolute;
+	bottom: 50%;
+	text-align: center;
+	width: 100%;
+	font-family: monospace;
+	font-style: normal;
+	font-weight: 400;
+	color: #8f0d3f;
+	z-index:0;
+}
+
+#canv{
+    position:absolute;
+    z-index:1;
+}
