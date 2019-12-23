@@ -1,10 +1,7 @@
 # JavaScript Art
 Art with JavaScript. 
 
-## Table of Contents
-- [Scare Starlings](#starlings)
+## Previews
 
-## Descriptions and Previews
-
-### Starlings 
-Code and preview on [CodePen](https://codepen.io/karlahrnndz/pen/qpmZxX).
+### Scare Starlings 
+Code and preview on [CodePen](https://codepen.io/karlahrnndz/pen/qBEmNmm).
