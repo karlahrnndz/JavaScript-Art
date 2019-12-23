@@ -1,7 +1,7 @@
 # JavaScript Art
-Art with JavaScript. 
+Art with JavaScript.
 
 ## Previews
 
 ### Scare Starlings 
-Code and preview on [CodePen](https://codepen.io/karlahrnndz/pen/qBEmNmm).
+Use your mouse to scare starlings in a starling murmuration. Preview on [CodePen](https://codepen.io/karlahrnndz/pen/qBEmNmm).
