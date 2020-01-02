@@ -8,7 +8,7 @@ var canv = document.getElementById('canv');
 var ctx = canv.getContext('2d');
 var w = canv.width = window.innerWidth;
 var h = canv.height = window.innerHeight;
-var initRad = Math.min(w/4,h/4);
+var initRad = Math.min(w/3,h/3);
 var scarea = Math.min(w/4,h/4);
 var mousePos = null;
 var noStarlings = 300;
@@ -48,6 +48,7 @@ var Starling = function (id, scarea) {
   this.goalFactor = Math.random() * 0.1 + 0.9;
   this.normalFactor = 0.1;
   this.rotationSpeed = 0.05;
+  this.rotationDirection = randomIntFromRange(0, 1);
   this.startPetalRadians = Math.PI * 2 * Math.random();
 };
 
@@ -108,7 +109,12 @@ function draw() {
 function updateStarlingPosition(Starling){
 
   // Rotate starling
-  Starling.startPetalRadians += Starling.rotationSpeed;
+  if (Starling.rotationDirection == 0) {
+    Starling.startPetalRadians += Starling.rotationSpeed;
+  } else {
+    Starling.startPetalRadians -= Starling.rotationSpeed;
+  }
+
 
   // Wrap a Starling's position if it goes off the edge
   if (Starling.x < 0){
