@@ -8,7 +8,20 @@ var canvas = document.querySelector('canvas')
 var c = canvas.getContext('2d')
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
+var mouse = {x: canvas.width / 2, y: canvas.height / 2}
 
+// Event listeners
+addEventListener('mousemove', event => {
+  mouse.x = event.clientX;
+  mouse.y = event.clientY;
+});
+
+addEventListener('resize', () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+
+  init();
+})
 
 // Utility Functions
 function randomIntFromRange(min, max) {
@@ -17,26 +30,34 @@ function randomIntFromRange(min, max) {
 
 // Objects
 function Particle(radius, color) {
-    const x = canvas.width / 2;
-    const y = canvas.height / 2;
+    const x = mouse.x;
+    const y = mouse.y;
     this.radius = radius;
     this.color = color;
     this.velocity = 0.05;
     this.radians = Math.random() * Math.PI * 2;
     this.distanceFromCenter = randomIntFromRange(50, 200);
-    this.x = x + Math.cos(this.radians) *
+
+    this.x = mouse.x + Math.cos(this.radians) *
     this.distanceFromCenter;
-    this.y = y + Math.sin(this.radians) *
+    this.y = mouse.y + Math.sin(this.radians) *
     this.distanceFromCenter;
+    this.lastMouse = {x: this.x, y: this.x};
 
     this.update = () => {
       const lastPoint = {x: this.x, y: this.y}
       ;
       // Move points over time
       this.radians += this.velocity;
-      this.x = x + Math.cos(this.radians) *
+
+      // Drag Effect
+      this.lastMouse.x += (mouse.x - this.lastMouse.x) * 0.05;
+      this.lastMouse.y += (mouse.y - this.lastMouse.y) * 0.05;
+
+      // Circular Motion
+      this.x = this.lastMouse.x + Math.cos(this.radians) *
       this.distanceFromCenter;
-      this.y = y + Math.sin(this.radians) *
+      this.y = this.lastMouse.y + Math.sin(this.radians) *
       this.distanceFromCenter;
       this.draw(lastPoint);
     };
