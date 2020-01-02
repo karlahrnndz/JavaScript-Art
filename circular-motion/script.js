@@ -1,5 +1,5 @@
 /*
-Circular motion.
+Move your mouse to have the particles follow.
 */
 
 
