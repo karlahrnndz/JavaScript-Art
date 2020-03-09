@@ -17,15 +17,15 @@ var floorHeight = 0.9;
 var floorCenter = canvas.width/2;
 var floorThickness = 5;
 var floorWidth = 100;
-        
+
 // Objects
 function Floor(x, y, width, thickness) {
-  
+
   this.x = x;
   this.y = y;
   this.width = width;
   this.alpha = 1;
-  
+
   this.draw = function() {
     c.globalAlpha = this.alpha;
     c.beginPath();
@@ -46,17 +46,18 @@ function Ball(x, y, dy, radius, color) {
   this.dy = dy;
   this.radius = radius
   this.color = color
-  
+
   this.update = function(friction, gravity, floorHeight) {
     if (this.y + this.radius + this.dy >= canvas.height*floorHeight) {
       this.dy = -this.dy * friction;
+      this.y = canvas.height*floorHeight - this.radius;
     } else {
       this.dy += gravity;
+      this.y += this.dy;
     }
-    this.y += this.dy;
     this.draw();
   };
-  
+
   this.draw = function() {
     c.globalAlpha = 1;
     c.beginPath();
@@ -82,20 +83,20 @@ function init() {
                   gravity,
                   ballRadius,
                   ballColor);
-  
+
   floor = new Floor(canvas.width*0.5,
                     canvas.height*0.9,
                     floorWidth,
                     floorThickness);
-  
+
 }
-  
+
 
 
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
-  
+
   c.clearRect(0, 0, canvas.width, canvas.height);
   ball.update(friction, gravity, floorHeight);
   floor.draw();
@@ -109,6 +110,6 @@ animate();
 addEventListener("resize", function() {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
-  
+
   init();
 });
