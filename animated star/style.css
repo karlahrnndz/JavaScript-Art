@@ -1,0 +1,119 @@
+*
+body
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* margin: 0;
+  padding: 0; */
+  background-color: #1c212e;
+}
+.container
+{
+  position: relative;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-size: contain;
+}
+.container .icon
+{
+  width: 30px;
+}
+.container .icon path
+{
+  fill: transparent;
+  stroke-width: 30;
+  stroke: #ffed77;
+}
+.container .icon.heart2 path
+{
+  fill: #ffed77;
+  stroke-width: 30;
+  stroke: #ffed77;
+}
+.container .icon path
+{
+  stroke-dasharray: 1560;
+  stroke-dashoffset: 0;
+}
+.container .icon.heart1:hover path
+{
+  animation: animate-heart1 1s linear forwards
+}
+.container .icon.heart2:hover path
+{
+  animation: animate-heart2 1s linear forwards
+}
+.container .icon.heart3:hover path
+{
+  animation: animate-heart3 1s linear forwards
+}
+@keyframes animate-heart1
+{
+  0%
+  {
+    stroke-dashoffset: 0;
+    fill: #ffed77;
+  }
+  40%
+  {
+    stroke-dashoffset: 1560;
+  }
+  80%
+  {
+    stroke-dashoffset: 3120;
+    fill: transparent;
+  }
+  100%
+  {
+    stroke-dashoffset: 3120;
+    fill: #ffed77;
+  }
+}
+@keyframes animate-heart2
+{
+  0%
+  {
+    stroke-dashoffset: 0;
+    fill: #ffed77;
+  }
+  40%
+  {
+    stroke-dashoffset: 1560;
+  }
+  80%
+  {
+    stroke-dashoffset: 3120;
+    fill: transparent;
+  }
+  100%
+  {
+    stroke-dashoffset: 3120;
+    fill: #ffed77;
+  }
+}
+@keyframes animate-heart3
+{
+  0%
+  {
+    stroke-dashoffset: 3120;
+    fill: #ffed77;
+  }
+  40%
+  {
+    stroke-dashoffset: 1560;
+  }
+  80%
+  {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100%
+  {
+    stroke-dashoffset: 0;
+    fill: #ffed77;
+  }
+}
